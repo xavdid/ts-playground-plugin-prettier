@@ -2,14 +2,18 @@
   "name": "ts-playground-plugin-prettier",
   "version": "0.0.1",
   "main": "dist/index.js",
-  "description": "My playground plugin",
+  "description": "A simple button to make valid playground code Prettier!",
   "license": "MIT",
   "keywords": [
     "playground-plugin"
   ],
+  "author": {
+    "name": "David Brownman",
+    "url": "https://xavd.id"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/[you]/[repo]"
+    "url": "https://github.com/xavdid/ts-playground-plugin-prettier"
   },
   "scripts": {
     "build": "rollup -c rollup.config.js;",
@@ -33,6 +37,8 @@
     "typescript": "latest"
   },
   "dependencies": {
+    "@types/prettier": "^2.1.1",
+    "prettier": "^2.1.2",
     "tslib": "^1.10.0"
   }
 }
