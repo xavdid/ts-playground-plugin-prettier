@@ -20,9 +20,12 @@
     "compile": "tsc",
     "bootstrap": "node scripts/getDTS.js",
     "start": "concurrently -p \"[{name}]\" -n \"ROLLUP,SITE\" -c \"bgBlue.bold,bgMagenta.bold\" \"yarn rollup -c rollup.config.js --watch\" \"yarn serve dist\"",
-    "prepublish": "yarn build",
+    "prepublishOnly": "yarn build",
     "postinstall": "yarn bootstrap && yarn build"
   },
+  "files": [
+    "dist/index.js"
+  ],
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-json": "^4.0.2",

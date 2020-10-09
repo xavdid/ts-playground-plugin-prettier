@@ -1,17 +1,15 @@
 ## TypeScript Playground Plugin
 
-My new plugin for the TypeScript playground.
+A simple Typescript Playground Plugin to invoke [Prettier](https://prettier.io/)
+
+It's currently intentionally very simple, but may support more options later.
 
 ## Running this plugin
-
-- [Click this link](https://www.staging-typescript.org/play?install-plugin=[name]) to install
-
-or
 
 - Open up the TypeScript Playground
 - Go the "Plugins" in the sidebar
 - Look for "Plugins from npm"
-- Add "[name]"
+- Add `ts-playground-plugin-prettier`
 - Reload the browser
 
 Then it will show up as a tab in the sidebar.
