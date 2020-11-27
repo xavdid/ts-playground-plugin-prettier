@@ -6,6 +6,12 @@ It's currently intentionally very simple, but may support more options later.
 
 ## Running this plugin
 
+As of 2020-11-27, it's available in the sidebar under plugins:
+
+![](https://cdn.zappy.app/323892f7ef49bf1399a039900b5e99cd.png)
+
+If it's not, you can also:
+
 - Open up the TypeScript Playground
 - Go the "Plugins" in the sidebar
 - Look for "Plugins from npm"
