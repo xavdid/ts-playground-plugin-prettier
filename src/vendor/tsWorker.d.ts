@@ -1,4 +1,4 @@
-import ts from 'typescript';
+import ts from "typescript";
 export declare class TypeScriptWorker implements ts.LanguageServiceHost {
     private _ctx;
     private _extraLibs;
@@ -35,6 +35,8 @@ export declare class TypeScriptWorker implements ts.LanguageServiceHost {
     getEmitOutput(fileName: string): Promise<ts.EmitOutput>;
     getCodeFixesAtPosition(fileName: string, start: number, end: number, errorCodes: number[], formatOptions: ts.FormatCodeOptions): Promise<ReadonlyArray<ts.CodeFixAction>>;
     updateExtraLibs(extraLibs: IExtraLibs): void;
+    readFile(path: string, encoding?: string | undefined): string | undefined;
+    fileExists(path: string): boolean;
 }
 export interface IExtraLib {
     content: string;
