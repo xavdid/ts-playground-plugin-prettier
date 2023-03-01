@@ -32,7 +32,9 @@
     "@rollup/plugin-node-resolve": "^11.1",
     "@rollup/plugin-typescript": "^8.1",
     "@types/react": "^17",
+    "@typescript/sandbox": "^0.1.0",
     "concurrently": "^5.1.0",
+    "lz-string": "^1.4.4",
     "monaco-editor": "^0.21.3",
     "node-fetch": "^2.6.0",
     "rollup": "^2.38",
@@ -40,8 +42,8 @@
     "typescript": "latest"
   },
   "dependencies": {
-    "@types/prettier": "^2.1.6",
-    "prettier": "^2.2.1",
+    "@types/prettier": "^2.7.2",
+    "prettier": "^2.8.4",
     "tslib": "^2.1"
   }
 }
