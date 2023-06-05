@@ -1,10 +1,10 @@
-declare type System = import("typescript").System;
-declare type CompilerOptions = import("typescript").CompilerOptions;
-declare type CustomTransformers = import("typescript").CustomTransformers;
-declare type LanguageServiceHost = import("typescript").LanguageServiceHost;
-declare type CompilerHost = import("typescript").CompilerHost;
-declare type SourceFile = import("typescript").SourceFile;
-declare type TS = typeof import("typescript");
+type System = import("typescript").System;
+type CompilerOptions = import("typescript").CompilerOptions;
+type CustomTransformers = import("typescript").CustomTransformers;
+type LanguageServiceHost = import("typescript").LanguageServiceHost;
+type CompilerHost = import("typescript").CompilerHost;
+type SourceFile = import("typescript").SourceFile;
+type TS = typeof import("typescript");
 export interface VirtualTypeScriptEnvironment {
     sys: System;
     languageService: import("typescript").LanguageService;
