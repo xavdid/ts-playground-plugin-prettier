@@ -1,6 +1,6 @@
 import type { Sandbox } from "@typescript/sandbox";
 import type { DiagnosticRelatedInformation, Node } from "typescript";
-export declare type LocalStorageOption = {
+export type LocalStorageOption = {
     blurb: string;
     flag: string;
     display: string;
@@ -9,11 +9,11 @@ export declare type LocalStorageOption = {
     requireRestart?: true;
     onchange?: (newValue: boolean) => void;
 };
-export declare type OptionsListConfig = {
+export type OptionsListConfig = {
     style: "separated" | "rows";
     requireRestart?: true;
 };
-export declare type DesignSystem = ReturnType<ReturnType<typeof createDesignSystem>>;
+export type DesignSystem = ReturnType<ReturnType<typeof createDesignSystem>>;
 export declare const createDesignSystem: (sandbox: Sandbox) => (container: Element) => {
     /** The element of the design system */
     container: Element;
