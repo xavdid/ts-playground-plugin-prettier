@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.4
+
+_Released `2023-06-06`_
+
+- Update `prettier` to `2.8.8`, bringing support for `const` type parameters (https://github.com/xavdid/ts-playground-plugin-prettier/pull/3)
+
 ## 0.0.3
 
 _Released `2023-02-28`_
