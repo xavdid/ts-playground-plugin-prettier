@@ -1,9 +1,10 @@
 import type { PlaygroundPlugin, PluginUtils } from "./vendor/playground";
 
 import prettier from "prettier/standalone";
-import tsPlugin from "prettier/parser-typescript";
+import estreePlugin from "prettier/plugins/estree";
+import tsPlugin from "prettier/plugins/typescript";
 
-const plugins = [tsPlugin];
+const plugins = [estreePlugin, tsPlugin];
 
 const ERR_ID = "prettier-error";
 const CONFIG_KEY = "ts-playground-plugin-prettier--config";
@@ -22,7 +23,6 @@ const makePlugin = (utils: PluginUtils) => {
       console.log("Loading prettier");
 
       let config = getConfigFromJson(localStorage[CONFIG_KEY]) || {};
-      let previousText = "";
 
       // Create a design system object to handle
       // making DOM elements which fit the playground (and handle mobile/light/dark etc)
@@ -37,20 +37,23 @@ const makePlugin = (utils: PluginUtils) => {
       startButton.value = "Make Pretty!";
       container.appendChild(startButton);
 
-      startButton.onclick = () => {
+      startButton.onclick = () =>
+        sandbox.editor.trigger("action", "editor.action.formatDocument", null);
+
+      function formatText(currentText: string) {
         const maybeErrEl = document.getElementById(ERR_ID);
         if (maybeErrEl) {
           maybeErrEl.parentElement.removeChild(maybeErrEl);
         }
+
         try {
-          const currentText = sandbox.getText();
           const result = prettier.format(currentText, {
             parser: "typescript",
             plugins,
             ...config,
           });
-          sandbox.setText(result);
-          previousText = currentText;
+
+          return result;
         } catch (e) {
           const el = ds.p("Err!" + e.message.split("\n").join("<br/>"));
           el.setAttribute("id", ERR_ID);
@@ -58,15 +61,7 @@ const makePlugin = (utils: PluginUtils) => {
           // probably a syntax error
           console.log("err", e.message);
         }
-      };
-
-      const undoButton = document.createElement("button");
-      undoButton.textContent = "Undo!";
-      undoButton.style.margin = "0 20px";
-      undoButton.onclick = () => {
-        if (previousText) sandbox.setText(previousText);
-      };
-      container.appendChild(undoButton);
+      }
 
       ds.p(
         "Add optional Prettier config in JSON format (automatically saved to localStorage)."
@@ -89,6 +84,29 @@ const makePlugin = (utils: PluginUtils) => {
         localStorage[CONFIG_KEY] = newConfigJson;
       };
       container.appendChild(configTextarea);
+
+      sandbox.monaco.languages.registerDocumentFormattingEditProvider(
+        "typescript",
+        {
+          async provideDocumentFormattingEdits(model) {
+            const text = await formatText(model.getValue());
+
+            if (!text) return [];
+
+            return [
+              {
+                text,
+                range: {
+                  startLineNumber: 0,
+                  startColumn: 1,
+                  endLineNumber: model.getLineCount(),
+                  endColumn: 1,
+                },
+              },
+            ];
+          },
+        }
+      );
     },
   };
 
