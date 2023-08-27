@@ -1,8 +1,8 @@
 import type { PlaygroundPlugin, PluginUtils } from "./vendor/playground";
 
-import prettier from "prettier/standalone";
 import estreePlugin from "prettier/plugins/estree";
 import tsPlugin from "prettier/plugins/typescript";
+import prettier from "prettier/standalone";
 
 const plugins = [estreePlugin, tsPlugin];
 
@@ -47,13 +47,11 @@ const makePlugin = (utils: PluginUtils) => {
         }
 
         try {
-          const result = prettier.format(currentText, {
+          return prettier.format(currentText, {
             parser: "typescript",
             plugins,
             ...config,
           });
-
-          return result;
         } catch (e) {
           const el = ds.p("Err!" + e.message.split("\n").join("<br/>"));
           el.setAttribute("id", ERR_ID);
@@ -91,7 +89,9 @@ const makePlugin = (utils: PluginUtils) => {
           async provideDocumentFormattingEdits(model) {
             const text = await formatText(model.getValue());
 
-            if (!text) return [];
+            if (!text) {
+              return [];
+            }
 
             return [
               {
