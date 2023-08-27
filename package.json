@@ -1,6 +1,6 @@
 {
   "name": "ts-playground-plugin-prettier",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "dist/index.js",
   "description": "A simple button to make valid playground code Prettier!",
   "license": "MIT",
