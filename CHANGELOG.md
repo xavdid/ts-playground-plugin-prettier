@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.6
+
+_Released `2023-08-28`_
+
+- Fix a bug where the last line of text was duplicated ([#5](https://github.com/xavdid/ts-playground-plugin-prettier/pull/5))
+
 ## 0.0.5
 
 _Released `2023-08-26`_
