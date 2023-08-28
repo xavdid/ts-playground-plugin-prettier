@@ -96,12 +96,7 @@ const makePlugin = (utils: PluginUtils) => {
             return [
               {
                 text,
-                range: {
-                  startLineNumber: 0,
-                  startColumn: 1,
-                  endLineNumber: model.getLineCount(),
-                  endColumn: 1,
-                },
+                range: model.getFullModelRange(),
               },
             ];
           },
